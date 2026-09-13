@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKM BOT</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#07111f;
+  color:white;
+  padding:20px;
+}
+.app{
+  max-width:420px;
+  margin:auto;
+}
+h1{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:5px;
+}
+.sub{
+  text-align:center;
+  color:#8fa3b8;
+  margin-bottom:30px;
+}
+.card{
+  background:#101d2d;
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:16px;
+}
+label{
+  display:block;
+  color:#9fb0c3;
+  margin-bottom:8px;
+}
+select{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  background:#07111f;
+  color:white;
+  border:1px solid #33465c;
+  font-size:17px;
+}
+.times{
+  display:flex;
+  gap:10px;
+}
+.time{
+  flex:1;
+  padding:14px;
+  border:1px solid #33465c;
+  background:#07111f;
+  color:white;
+  border-radius:12px;
+  font-size:17px;
+}
+.time.active{
+  background:#2563eb;
+}
+.payout{
+  font-size:28px;
+  font-weight:bold;
+}
+.analyze{
+  width:100%;
+  padding:18px;
+  border:0;
+  border-radius:15px;
+  background:#16a34a;
+  color:white;
+  font-size:21px;
+  font-weight:bold;
+}
+.result{
+  text-align:center;
+  font-size:30px;
+  font-weight:bold;
+  margin-top:18px;
+}
+.free{
+  text-align:center;
+  color:#9fb0c3;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>TKM BOT</h1>
+<div class="sub">Pocket Option OTC Analyzer</div>
+
+<div class="card">
+<label>OTC пара</label>
+<select>
+<option>EUR/USD OTC</option>
+<option>GBP/USD OTC</option>
+<option>USD/JPY OTC</option>
+<option>AUD/USD OTC</option>
+<option>EUR/JPY OTC</option>
+</select>
+</div>
+
+<div class="card">
+<label>Время сделки</label>
+<div class="times">
+<button class="time active" onclick="chooseTime(this)">1M</button>
+<button class="time" onclick="chooseTime(this)">3M</button>
+<button class="time" onclick="chooseTime(this)">5M</button>
+</div>
+</div>
+
+<div class="card">
+<label>Выплата</label>
+<div class="payout">-- %</div>
+</div>
+
+<button class="analyze" onclick="analyze()">АНАЛИЗ</button>
+
+<div class="result" id="result">ЖДАТЬ</div>
+
+<div class="free">
+Бесплатных анализов осталось: <b id="count">5</b>
+</div>
+
+</div>
+
+<script>
+let free = 5;
+
+function chooseTime(button){
+  document.querySelectorAll(".time").forEach(x =>
+    x.classList.remove("active")
+  );
+  button.classList.add("active");
+}
+
+function analyze(){
+  if(free <= 0){
+    document.getElementById("result").innerText =
+      "НУЖНА АКТИВАЦИЯ";
+    return;
+  }
+
+  free--;
+  document.getElementById("count").innerText = free;
+
+  // Пока реальные котировки не подключены,
+  // никаких выдуманных торговых сигналов.
+  document.getElementById("result").innerText = "ЖДАТЬ";
+}
+</script>
+
+</body>
+</html>
