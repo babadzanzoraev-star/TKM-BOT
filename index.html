@@ -13,6 +13,262 @@ body{
   color:white;
   padding:20px;
 }
+.app{max-width:420px;margin:auto}
+h1{text-align:center;font-size:38px;margin-bottom:5px}
+.sub{text-align:center;color:#8fa3b8;margin-bottom:30px}
+.card{
+  background:#101d2d;
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:16px;
+}
+label{display:block;color:#9fb0c3;margin-bottom:8px}
+select{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  background:#07111f;
+  color:white;
+  border:1px solid #33465c;
+  font-size:17px;
+}
+.times{display:flex;gap:10px}
+.time{
+  flex:1;padding:14px;
+  border:1px solid #33465c;
+  background:#07111f;color:white;
+  border-radius:12px;font-size:17px;
+}
+.time.active{background:#2563eb}
+.payout{font-size:28px;font-weight:bold}
+.status{font-size:14px;color:#f59e0b;margin-top:8px}
+.analyze{
+  width:100%;padding:18px;border:0;
+  border-radius:15px;background:#16a34a;
+  color:white;font-size:21px;font-weight:bold;
+}
+.result{
+  text-align:center;font-size:30px;
+  font-weight:bold;margin-top:18px;
+}
+.free{text-align:center;color:#9fb0c3;margin-top:20px}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<h1>TKM BOT</h1>
+<div class="sub">Pocket Option OTC Analyzer</div>
+
+<div class="card">
+<label>OTC актив</label>
+
+<select id="pair">
+
+<optgroup label="Валюты">
+<option>EUR/USD OTC</option>
+<option>AUD/CAD OTC</option>
+<option>AUD/CHF OTC</option>
+<option>AUD/NZD OTC</option>
+<option>AUD/USD OTC</option>
+<option>AUD/JPY OTC</option>
+<option>CAD/CHF OTC</option>
+<option>CAD/JPY OTC</option>
+<option>CHF/JPY OTC</option>
+<option>CHF/NOK OTC</option>
+<option>EUR/CHF OTC</option>
+<option>EUR/GBP OTC</option>
+<option>EUR/JPY OTC</option>
+<option>EUR/NZD OTC</option>
+<option>GBP/AUD OTC</option>
+<option>GBP/JPY OTC</option>
+<option>GBP/USD OTC</option>
+<option>NZD/JPY OTC</option>
+<option>NZD/USD OTC</option>
+<option>USD/CAD OTC</option>
+<option>USD/CHF OTC</option>
+<option>USD/JPY OTC</option>
+<option>EUR/RUB OTC</option>
+<option>EUR/TRY OTC</option>
+<option>EUR/HUF OTC</option>
+<option>USD/RUB OTC</option>
+<option>USD/CNH OTC</option>
+<option>USD/INR OTC</option>
+<option>USD/PKR OTC</option>
+<option>USD/IDR OTC</option>
+<option>USD/BRL OTC</option>
+<option>USD/CLP OTC</option>
+<option>USD/COP OTC</option>
+<option>USD/ARS OTC</option>
+<option>USD/DZD OTC</option>
+<option>USD/MYR OTC</option>
+<option>USD/THB OTC</option>
+<option>USD/SGD OTC</option>
+<option>USD/BDT OTC</option>
+<option>USD/EGP OTC</option>
+<option>USD/PHP OTC</option>
+<option>USD/VND OTC</option>
+<option>UAH/USD OTC</option>
+<option>ZAR/USD OTC</option>
+<option>NGN/USD OTC</option>
+<option>KES/USD OTC</option>
+<option>YER/USD OTC</option>
+<option>TND/USD OTC</option>
+<option>LBP/USD OTC</option>
+<option>MAD/USD OTC</option>
+<option>AED/CNY OTC</option>
+<option>BHD/CNY OTC</option>
+<option>JOD/CNY OTC</option>
+<option>OMR/CNY OTC</option>
+<option>QAR/CNY OTC</option>
+<option>SAR/CNY OTC</option>
+</optgroup>
+
+<optgroup label="Сырьё">
+<option>Gold OTC</option>
+<option>Silver OTC</option>
+<option>Brent Oil OTC</option>
+<option>WTI Crude Oil OTC</option>
+<option>Natural Gas OTC</option>
+<option>Platinum spot OTC</option>
+<option>Palladium spot OTC</option>
+</optgroup>
+
+<optgroup label="Акции">
+<option>Apple OTC</option>
+<option>Amazon OTC</option>
+<option>Tesla OTC</option>
+<option>Microsoft OTC</option>
+<option>Intel OTC</option>
+<option>Boeing Company OTC</option>
+<option>Cisco OTC</option>
+<option>FedEx OTC</option>
+<option>Netflix OTC</option>
+<option>FACEBOOK INC OTC</option>
+<option>Citigroup Inc OTC</option>
+<option>VISA OTC</option>
+<option>Pfizer Inc OTC</option>
+<option>ExxonMobil OTC</option>
+<option>McDonald's OTC</option>
+<option>Johnson & Johnson OTC</option>
+<option>Alibaba OTC</option>
+<option>Coinbase Global OTC</option>
+<option>Palantir Technologies OTC</option>
+<option>Advanced Micro Devices OTC</option>
+<option>GameStop Corp OTC</option>
+<option>American Express OTC</option>
+<option>Marathon Digital Holdings OTC</option>
+<option>VIX OTC</option>
+</optgroup>
+
+<optgroup label="Криптовалюты">
+<option>Bitcoin OTC</option>
+<option>Ethereum OTC</option>
+<option>Litecoin OTC</option>
+<option>Dogecoin OTC</option>
+<option>TRON OTC</option>
+<option>BNB OTC</option>
+<option>Solana OTC</option>
+<option>Toncoin OTC</option>
+<option>Cardano OTC</option>
+<option>Avalanche OTC</option>
+<option>Chainlink OTC</option>
+<option>Polygon OTC</option>
+<option>Polkadot OTC</option>
+<option>Bitcoin ETF OTC</option>
+</optgroup>
+
+<optgroup label="Индексы">
+<option>SP500 OTC</option>
+<option>DJI30 OTC</option>
+<option>US100 OTC</option>
+<option>AUS 200 OTC</option>
+<option>JPN225 OTC</option>
+<option>D30EUR OTC</option>
+<option>E35EUR OTC</option>
+<option>E50EUR OTC</option>
+<option>F40EUR OTC</option>
+<option>100GBP OTC</option>
+</optgroup>
+
+</select>
+</div>
+
+<div class="card">
+<label>Время сделки</label>
+<div class="times">
+<button class="time active" onclick="chooseTime(this)">1M</button>
+<button class="time" onclick="chooseTime(this)">3M</button>
+<button class="time" onclick="chooseTime(this)">5M</button>
+</div>
+</div>
+
+<div class="card">
+<label>Выплата</label>
+<div class="payout">-- %</div>
+<div class="status">Подключение OTC-данных — следующий этап</div>
+</div>
+
+<button class="analyze" onclick="analyze()">АНАЛИЗ</button>
+
+<div class="result" id="result">ЖДАТЬ</div>
+
+<div class="free">
+Бесплатных анализов осталось:
+<b id="count">5</b>
+</div>
+
+</div>
+
+<script>
+let free = Number(localStorage.getItem("tkm_free"));
+
+if(!Number.isFinite(free)){
+  free = 5;
+}
+
+document.getElementById("count").innerText = free;
+
+function chooseTime(button){
+  document.querySelectorAll(".time").forEach(x =>
+    x.classList.remove("active")
+  );
+  button.classList.add("active");
+}
+
+function analyze(){
+  if(free <= 0){
+    document.getElementById("result").innerText =
+      "НУЖНА АКТИВАЦИЯ";
+    return;
+  }
+
+  free--;
+  localStorage.setItem("tkm_free",free);
+  document.getElementById("count").innerText=free;
+
+  // Реальные OTC-котировки ещё не подключены.
+  document.getElementById("result").innerText="ЖДАТЬ";
+}
+</script>
+
+</body>
+  </html><!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKM BOT</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#07111f;
+  color:white;
+  padding:20px;
+}
 
 .app{
   max-width:420px;
