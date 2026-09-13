@@ -441,17 +441,29 @@ function chooseTime(button){
   button.classList.add("active");
 }
 
-function analyze(){
+async function analyze(){
   if(free <= 0){
     document.getElementById("result").innerText = "НУЖНА АКТИВАЦИЯ";
     return;
   }
 
-  free--;
-  localStorage.setItem("tkm_free", free);
-  document.getElementById("count").innerText = free;
+  document.getElementById("result").innerText = "ПРОВЕРКА...";
 
-  document.getElementById("result").innerText = "ЖДАТЬ";
+  try{
+    const response = await fetch("https://tkm-bot-api.babadzanzoraev.workers.dev/");
+    const text = await response.text();
+
+    if(text.includes("TKM BOT API ONLINE")){
+      free--;
+      localStorage.setItem("tkm_free", free);
+      document.getElementById("count").innerText = free;
+      document.getElementById("result").innerText = "СЕРВЕР ПОДКЛЮЧЕН";
+    }else{
+      document.getElementById("result").innerText = "ОШИБКА СЕРВЕРА";
+    }
+  }catch(e){
+    document.getElementById("result").innerText = "НЕТ СВЯЗИ";
+  }
 }
 </script>
 
